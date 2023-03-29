@@ -299,7 +299,7 @@ def main():
 
         generator = Generate()
 
-        ### Model was fine-tuned on data/train.txt using the following script:
+        ### Clone https://github.com/huggingface/transformers and use the following script to fine-tune on data/train.txt:
         '''
         python3 -u transformers/examples/pytorch/language-modeling/run_clm.py \
                 --model_name_or_path gpt2 \
@@ -310,10 +310,6 @@ def main():
                 --num_train_epochs 5\
                 >& output.log
         '''
-
-        # Zero shot accuracy
-        valid_acc, test_acc = generator.test("gpt2")
-        print(f"Zero-shot GENERATOR Validation accuracy: {valid_acc} | Test accuracy: {test_acc}")
 
         # Fine-tuned accuracy
         valid_acc, test_acc = generator.test("models/gpt497")

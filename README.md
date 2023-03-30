@@ -2,6 +2,7 @@
 ** By Will Smart:
         - [LinkedIn](https://www.linkedin.com/in/will-smart/)
         - [GitHub](https://github.com/wsmartf)**
+        
 The projects in this repository are created to experiment with different model architectures on different NLP tasks.  
 
  - The first project (Fakes Detection) uses the Feed Forward Neural Network (FFNN) and the Long Short Term Memory (LSTM) architectures in two different experimetns to classify different datasets of biographies into REAL or FAKE labels, where REAL indicates that the biography is a real one, and fake indicates that it was synthesized by another language model.

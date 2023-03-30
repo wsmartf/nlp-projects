@@ -1,5 +1,4 @@
-# NLP LM Experiments
-
+# Language Modeling NLP Experiments
 The projects in this repository are created to experiment with different model architectures on different NLP tasks.  
 
  - The first project (Fakes Detection) uses the Feed Forward Neural Network (FFNN) and the Long Short Term Memory (LSTM) architectures in two different experimetns to classify different datasets of biographies into REAL or FAKE labels, where REAL indicates that the biography is a real one, and fake indicates that it was synthesized by another language model.
@@ -76,13 +75,14 @@ The performance of the LSTM model was worse than the one of the FFNN model. The 
 
 Based on our evaluation of the FFNN and LSTM, the FFNN performed better on the labeled test set, achieving 66.8% accuracy, while the LSTM only achieved 59.3% accuracy. Using the FFNN model along with the threshold we determined from the labeled test set, we generated predictions for the 500 blind observations. This file is called “FFNN_blind_test_labels.csv” and contains [REAL] and [FAKE] predictions for each observation. One limitation of this technique is that the predictions rely on this single threshold that was produced from our limited held-out test data, and this distribution may vary from that of the blind test data, resulting in more misclassifications.
 
-## reproducing Results
+## Reproducing Results
 
 In the main function found in [`fakes-detection-ffnn-lstm/fakes-detection.py`](fakes-detection-ffnn-lstm/fakes-detection.py), there are many arguments that can be specified to run different parts of the experiment with different hyper-parameters. We've simplified this such that the user needs to only specify 2 arguments: 
  1. model: can take 2 values, either 'ffnn' for the feed forward NN, or 'lstm' for the lstm.
- 2. mode: the mode wanted to run on (train, eval, test) and is available for both models. The ffnn model also has a plot mode which plots the probability distribution plot shown in [figure 4](### Figure 2: FFNN - Probability Distribution of Bios)
+ 2. mode: the mode wanted to run on (train, eval, test) and is available for both models. The ffnn model also has a plot mode which plots the probability distribution plot shown in figure 2 above.
 
 For example, the following is a sample script to run from the root directory to get testing results for ffnn on the blind dataset.
+
     python3 fakes-detection-ffnn-lstm/fakes-detection.py -model=ffnn -mode=test
     
 # Project 2: BERT / GPT2 Question Answering
@@ -125,7 +125,7 @@ Our generative approach begins by initializing and loading the pretrained GPT-2 
     tokenizer.decode(pred_label) = D
     A != D, so Incorrect prediction
 
-We concatenate all of these observations into a single text file to use for training. We then fine-tune the GPT2 model using the run_clm.py script from the Hugging Face [Transformers/examples](https://github.com/huggingface/transformers/tree/main/examples) library. The script and parameters we use are shown below in Figure 7.
+We concatenate all of these observations into a single text file to use for training. We then fine-tune the GPT2 model using the run_clm.py script from the Hugging Face [transformers/examples](https://github.com/huggingface/transformers) library. The script and parameters we use are shown below in Figure 7.
 
 ### Figure 7: Fine-tuning GPT-2 model in generative approach
 
@@ -139,7 +139,15 @@ We concatenate all of these observations into a single text file to use for trai
 The main limitation of this approach is our training. We provide the data as a single text file, and the GPT2 weights are fine-tuned to minimize loss over the entire corpus, instead doing a single update for each input prompt. This allows the model to better-understand the overall structure of the data, but didn't result in significant improvements to accuracy (4% and 2% improvements in our validation and test accuracy). We could likely improve the effectiveness of our fine-tuning by writing a custom training loop that performs more targeted weight updates for our specific problem. We could also experiment with different hyperparameters. We attempted to train with more epochs, as we used 10 instead of 5 and it actually scored a worse validation and training accuracy, which could mean the model overfit. An improvement we could have explored is different prompting methods which could have yielded better results.
 Overall, our classification approach yielded better results, with 48% validation and 45.8% test accuracy. This approach is more tailored to the prompted question answering problem, as we were able to design a specific structure to support our question and answer format. The loss calculations and updates directly worked to improve the model's ability to accurately label each potential answer as True or False, resulting in decent performance on the test sets. For classification, the outputs are constrained to 2 probabilities for our 4 options. On the other hand, for generations, we are losing information by trying to predict probabilities for a whole vocabulary of 50,000+ words, as the probabilities for the 4 labels we care about may be extremely small in magnitude (and very close to each other). Overall, classification seems to lend itself more towards this specific task, as we were able to achieve nearly 50% accuracy after only a couple hours of training for the linear layer. <br> <br>
 
+## Reproducing Results
 
+In the main function found in [`question-answering-bert-gpt/question-answering.py`](question-answering-bert-gpt/question-answering.py), there are 2 arguments that can be specified to run different parts of the experiment:
+ 1. model: can take 2 values, either 'classifier' or 'generator'. The classifier model is the classification approach, and the generator model is the generative approach. The default model is 'classifier'.
+ 2. mode: the mode wanted to run on ('train' or 'test') and is available for both models. The default mode is 'test'.
+
+For example, the following is a sample script to run from the root directory to get fine-tuned classifier Validation  and test accuracy
+
+    python3 question-answering-bert-gpt/question-answering.py -model=classifier -mode=test
 
 
 

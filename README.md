@@ -1,4 +1,7 @@
 # Language Modeling NLP Experiments
+** By Will Smart:
+        - [LinkedIn](https://www.linkedin.com/in/will-smart/)
+        - [GitHub](https://github.com/wsmartf)**
 The projects in this repository are created to experiment with different model architectures on different NLP tasks.  
 
  - The first project (Fakes Detection) uses the Feed Forward Neural Network (FFNN) and the Long Short Term Memory (LSTM) architectures in two different experimetns to classify different datasets of biographies into REAL or FAKE labels, where REAL indicates that the biography is a real one, and fake indicates that it was synthesized by another language model.
@@ -148,15 +151,3 @@ In the main function found in [`question-answering-bert-gpt/question-answering.p
 For example, the following is a sample script to run from the root directory to get fine-tuned classifier Validation  and test accuracy
 
     python3 question-answering-bert-gpt/question-answering.py -model=classifier -mode=test
-
-
-
-# Authors
- - Omar Khatib:
-        - [LinkedIn](https://www.linkedin.com/in/omar-khatib-01/)
-        - [GitHub](https://github.com/OmarKhatib01)
-        - [Portfolio](https://omarkhatib01.github.io/)
-
- - Will Smart:
-        - [LinkedIn](https://www.linkedin.com/in/will-smart/)
-        - [GitHub](https://github.com/wsmartf)

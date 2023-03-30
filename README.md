@@ -1,7 +1,7 @@
 # Language Modeling NLP Experiments
-** By Will Smart:
+By Will Smart:
         - [LinkedIn](https://www.linkedin.com/in/will-smart/)
-        - [GitHub](https://github.com/wsmartf)**
+        - [GitHub](https://github.com/wsmartf)
         
 The projects in this repository are created to experiment with different model architectures on different NLP tasks.  
 

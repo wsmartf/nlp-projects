@@ -3,9 +3,9 @@ By Will Smart:
         - [LinkedIn](https://www.linkedin.com/in/will-smart/)
         - [GitHub](https://github.com/wsmartf)
         
-The projects in this repository are created to experiment with different model architectures on different NLP tasks.  
+The projects in this repository are created to experiment with and apply different model architectures to NLP tasks.  
 
- - The first project (Fakes Detection) uses the Feed Forward Neural Network (FFNN) and the Long Short Term Memory (LSTM) architectures in two different experimetns to classify different datasets of biographies into REAL or FAKE labels, where REAL indicates that the biography is a real one, and fake indicates that it was synthesized by another language model.
+ - The first project (Fakes Detection) uses the Feed Forward Neural Network (FFNN) and the Long Short Term Memory (LSTM) architectures in two different experiments to classify different datasets of biographies into REAL or FAKE labels, where REAL indicates that the biography is a real one, and fake indicates that it was synthesized by another language model.
 
  - The second project (Question Answering) uses transformers imported from the [Hugging Face transformers library](https://huggingface.co/docs/transformers/index) to perform the NLP task of multiple choice question answering by fine tuning the bert-base-uncased  BERT pretrained model using a classification approach, and the gpt-2 pretrained model using a generative approach.
 

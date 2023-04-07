@@ -5,9 +5,9 @@ By Will Smart:
         
 The projects in this repository are created to experiment with and apply different model architectures to NLP tasks.  
 
- - The first project (Fakes Detection) uses the Feed Forward Neural Network (FFNN) and the Long Short Term Memory (LSTM) architectures in two different experiments to classify different datasets of biographies into REAL or FAKE labels, where REAL indicates that the biography is a real one, and fake indicates that it was synthesized by another language model.
+ - The first project (Fakes Detection) uses Feed Forward Neural Network (FFNN) and the Long Short Term Memory (LSTM) architectures to classify different datasets of biographies as REAL or FAKE, where FAKE bios were synthesized by another language model.
 
- - The second project (Question Answering) uses transformers imported from the [Hugging Face transformers library](https://huggingface.co/docs/transformers/index) to perform the NLP task of multiple choice question answering by fine tuning the bert-base-uncased  BERT pretrained model using a classification approach, and the gpt-2 pretrained model using a generative approach.
+ - The second project (Question Answering) uses transformers imported from the [Hugging Face transformers library](https://huggingface.co/docs/transformers/index) to perform the NLP task of multiple choice question answering. I fine-tuned the bert-base-uncased BERT pretrained model using a classification approach, and the gpt-2 pretrained model using a generative approach.
 
 
 # Project 1: Feed Forward NN / LSTM Fakes Detection 
@@ -73,7 +73,7 @@ The model was much more likely to incorrectly predict a real bio as a fake one (
 146/215 = 0.679 | 146/505 = 0.289 | 59.32% | 0.406
 
 
-The performance of the LSTM model was worse than the one of the FFNN model. The dimensions of the trained model were only 64, which may have been too small to achieve the learning task. Increasing the dimensions to 512 would likely improve performance. In addition, another limitation that can be found is overfitting. LSTMs are easily susceptible to overfitting, this can be seen in Figure 4 above, where near the twentieth epoch, the testing perplexity begins to uptick. This is an indication of overfitting because the training dataset continues to improve but the validation dataset starts to degrade. We don't use any other regularization techniques except dropout regularization.
+The performance of the LSTM model was worse than that of the FFNN model. The dimensions of the trained model were only 64, which may have been too small to achieve the learning task. Increasing the dimensions to 512 would likely improve performance. In addition, another limitation that can be found is overfitting. LSTMs are easily susceptible to overfitting, this can be seen in Figure 4 above, where near the twentieth epoch, the testing perplexity begins to uptick. This is an indication of overfitting because the training dataset continues to improve but the validation dataset starts to degrade. We don't use any other regularization techniques except dropout regularization.
 
 ## Part 3: Performing Fakes Detection on the Blind Testing Dataset
 
